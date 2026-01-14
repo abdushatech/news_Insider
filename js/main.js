@@ -1,4 +1,4 @@
-const POSTS_DIR = "posts/";
+const POSTS_DIR = "news_Insider/posts/";
 let ALL_POSTS = [];
 
 /* theme */
