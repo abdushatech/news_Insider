@@ -1,135 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Abdi Insider – Insight on Tech, Life & Culture</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Short, sharp, useful updates on everything that matters—by Abdi.">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <script defer src="js/main.js"></script>
-</head>
+/* dark-mode toggle */
+const toggle = document.getElementById("theme-toggle");
+const stored = localStorage.getItem("theme");
+const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches
+  ? "dark"
+  : "light";
+document.documentElement.setAttribute("data-theme", stored || prefers);
+toggle.addEventListener("click", () => {
+  const current = document.documentElement.getAttribute("data-theme");
+  const next = current === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+});
 
-<body>
-<header class="top">
-  <div class="container row">
-    <a class="logo" href="./">Abdi Insider</a>
-    <nav class="nav row">
-      <a href="./">Home</a>
-      <a href="#beats">Beats</a>
-      <a href="#about">About</a>
-      <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
-      <h1>Hello world, I'm <span class="accent">Abdi</span>.</h1>
-      <p>I scan the noise and hand you the signal—tech, life, money, culture.</p>
-      <a class="btn" href="#beats">Latest updates</a>
-    </div>
-  </section>
-
-  <!-- Filter bar -->
-  <section id="beats" class="filter-bar container">
-    <button class="filter-btn active" data-tag="all">All</button>
-    <button class="filter-btn" data-tag="tech">Tech</button>
-    <button class="filter-btn" data-tag="life">Life</button>
-    <button class="filter-btn" data-tag="culture">Culture</button>
-    <button class="filter-btn" data-tag="money">Money</button>
-  </section>
-
-  <!-- Posts grid -->
-  <section class="blog container">
-   <div id="post-list" class="grid">
-  <!-- hard-coded cards -->
-  <article class="card" data-tags="tech">
-    <div class="card-body">
-      <h3 class="card-title">Today’s Technology</h3>
-      <p class="card-text">2-minute brief on the latest AI chatter and what it means for non-tech folks.</p>
-      <div class="card-footer">
-        <time>Jan 13, 2025</time>
-        <a class="read-more" href="post.html?slug=2025-01-14-ai-wrap">Read →</a>
-      </div>
-      <div class="tags"><span class="tag">tech</span></div>
-    </div>
-  </article>
-
-  <article class="card" data-tags="life">
-    <div class="card-body">
-      <h3 class="card-title">The Benefits of Drinking Water</h3>
-      <p class="card-text">1-minute brief about why water matters.</p>
-      <div class="card-footer">
-        <time>Jan 11, 2025</time>
-        <a class="read-more" href="post.html?slug=2025-01-11-water">Read →</a>
-      </div>
-      <div class="tags"><span class="tag">life</span></div>
-    </div>
-  </article>
-</div>
-  </section>
-
-  <!-- Newsletter -->
-  <section class="newsletter container">
-    <h3>Get the drop</h3>
-    <p>subscribe.</p>
-    <form action="https://formspree.io/f/xwkgzbqe" method="POST">
-      <input type="email" name="email" placeholder="your@email.com" required>
-      <button class="btn" type="submit">Subscribe</button>
-    </form>
-  </section>
-
-
-<section class="Get_in_Touch">
-  <h3>Reach Me Out</h3>
-  <p>Share me your thoughts</p>
-
-  <!-- new Google-form button -->
-  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSewJCetl7-GYzWiRZz9NIrfvD4MCwEhAgRK53g30YJtM5RlIQ/viewform?usp=header" target="_blank" rel="noopener">
-    Click Here To share Your thoughts.
-  </a>
-</section>
-
-
-
-</main>
-
-<!-- Social -->
-<aside class="social-bar">
-  <a href="https://facebook.com/abduselamali2" target="_blank" aria-label="Facebook"><svg><use href="#icon-fb"/></svg></a>
-  <a href="https://twitter.com/abdilselamali" target="_blank" aria-label="X / Twitter"><svg><use href="#icon-x"/></svg></a>
-  <a href="https://tiktok.com/@ab_dusha1" target="_blank" aria-label="TikTok"><svg><use href="#icon-tt"/></svg></a>
-  <a href="https://youtube.com/channel/UCPkmL0xlJfOXnsGevRH8fZw" target="_blank" aria-label="YouTube"><svg><use href="#icon-yt"/></svg></a>
-  <a href="mailto:abdilselambedru@gmail.com" aria-label="Email"><svg><use href="#icon-mail"/></svg></a>
-</aside>
-<svg aria-hidden="true" style="display:none;">
-
-
-
-  <symbol id="icon-fb" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
-
-<!-- inside the hidden SVG sprite -->
-<symbol id="icon-x" viewBox="0 0 24 24">
-  <path d="M14.095 10.35 21.42 2H19.32l-6.378 7.24L8.04 2H1l7.72 10.86L1 22h2.1l6.712-7.64 5.146 7.64H22L14.095 10.35zm-2.22 2.43-.81-1.15L3 4h2.74l5.22 7.36.81 1.15 6.78 9.56h-2.74l-5.53-7.8z"/>
-</symbol>
-
-<symbol id="icon-tt" viewBox="0 0 24 24">
-  <path d="M12.5 2C9.5 2 7 4.5 7 7.5v9c0 3 2.5 5.5 5.5 5.5s5.5-2.5 5.5-5.5V7.5c0-3-2.5-5.5-5.5-5.5zm3 10.5c-.3 1.9-1.8 3.3-3.5 3.3s-3.2-1.4-3.5-3.3H8V7.5c0-1.7 1.3-3 3-3s3 1.3 3 3v5h1.5zM16 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-</symbol>
-  <symbol id="icon-yt" viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.9-1.52-1.75-1.76C18.25 5 12 5 12 5s-6.25 0-7.83.43c-.85.24-1.52.9-1.75 1.76C2 8.05 2 12 2 12s0 3.95.42 4.81c.23.86.9 1.52 1.75 1.76C5.75 19 12 19 12 19s6.25 0 7.83-.43c.85-.24 1.52-.9 1.75-1.76C22 15.95 22 12 22 12s0-3.95-.42-4.81zM9.5 15.5V8.5l6 3.5-6 3.5z"/></symbol>
-  <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
-</svg>
-
-<footer class="footer container">
-  <p>© <span id="year"></span> Abdi Insider. Built with love ☕.</p>
-</footer>
-
-
-
-
-</body>
-</html>
+/* filter buttons (still works) */
+const buttons = document.querySelectorAll(".filter-btn");
+buttons.forEach((btn) =>
+  btn.addEventListener("click", () => {
+    buttons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    const tag = btn.dataset.tag;
+    document.querySelectorAll(".card").forEach((card) => {
+      card.style.display =
+        tag === "all" || card.dataset.tags.includes(tag) ? "flex" : "none";
+    });
+  })
+);
